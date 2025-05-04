@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+	--color-principal: #00875f;
+	--color-light: #00b37e;
+	--color-background: #121214;
+	--color-elements: #202024;
+	--color-icon: #8d8d99;
+	--color-text: #c4c4cc;
+	--color-title: #e1e1e6;
+}
+
+@layer base {
+	html,
+	body {
+		image-rendering: optimizeQuality;
+	}
+}
