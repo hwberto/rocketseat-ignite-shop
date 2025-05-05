@@ -47,6 +47,8 @@ export function Cart() {
 			})
 			.then((res) => res.data.checkoutUrl);
 
+		clearCart();
+
 		router.push(checkoutUrl);
 	};
 

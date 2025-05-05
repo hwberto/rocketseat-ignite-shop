@@ -45,6 +45,7 @@ export default async function SuccessPage({
 
 		return lineItems.reduce((total, item) => total + (item.quantity || 0), 0);
 	}
+	const totalItems = getTotalItems(checkoutSession.products);
 
 	return (
 		<main className="w-full px-20 max-w-7xl mx-auto py-8 relative">
@@ -65,7 +66,8 @@ export default async function SuccessPage({
 				<h1 className="font-bold text-3xl text-title">Compra efetuada!</h1>
 				<h2 className="text-xl text-text text-center">
 					Uhuul <b>{checkoutSession.customer.customer_details?.name}</b>, sua
-					compra de {getTotalItems(checkoutSession.products)} camisetas já
+					compra de {totalItems} {totalItems === 1 ? "camiseta" : "camisetas"}{" "}
+					já
 					<br /> está a caminho de sua casa.
 				</h2>
 				<Link href="/" className="mt-6">

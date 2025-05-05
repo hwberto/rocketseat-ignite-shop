@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import {
 	Carousel,
@@ -15,8 +15,8 @@ function CarouselComponent({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	const [api, setApi] = useState<CarouselApi>();
-	const canScrollPrev = api?.canScrollPrev;
-	const canScrollNext = api?.canScrollNext;
+	const [canScrollPrev, setCanScrollPrev] = useState<boolean>(false);
+	const [canScrollNext, setCanScrollNext] = useState<boolean>(true);
 
 	const scrollPrev = useCallback(() => {
 		api?.scrollPrev();
@@ -25,6 +25,11 @@ function CarouselComponent({
 	const scrollNext = useCallback(() => {
 		api?.scrollNext();
 	}, [api]);
+
+	api?.on("scroll", () => {
+		setCanScrollNext(api?.canScrollNext);
+		setCanScrollPrev(api?.canScrollPrev);
+	});
 
 	return (
 		<>
