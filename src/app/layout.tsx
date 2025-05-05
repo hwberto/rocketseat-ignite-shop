@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 
 import "./globals.css";
 
-const roboto = Roboto();
+const roboto = Roboto({ subsets: ["latin"]});
 
 export const metadata: Metadata = {
 	title: {
